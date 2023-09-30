@@ -96,7 +96,7 @@ export const Player: FC = () => {
 
     const setVolumeQuiet = () => {
         if (!audioRef.current) return;
-        const newValue = volume - 0.1 < 0 ? 1 : volume - 0.1;
+        const newValue = volume - 0.1 < 0 ? 0 : volume - 0.1;
         setVolume(newValue);
         audioRef.current.volume = newValue;
     };
