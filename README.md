@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# Музыкальный плеер, тестовый проект
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Начало работы
 
-Currently, two official plugins are available:
+Для работы с проектом необходимо иметь установленный [Node.js](https://nodejs.org/ru).
+После клонирования проекта, или же после изменения списка зависимостей в
+`package.json` необходимо выполнить команду `npm install` для загрузки всех необходимых
+зависимостей. Все зависимости будут скачаны в папку **node_modules**.
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Сборка приложения
 
-## Expanding the ESLint configuration
+Для сборки приложения используется сервер разработки [Vite](https://vitejs.ru/guide/).
+Основные команды для сборки и запуска приложения:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. `vite` (`npm run dev`) - запуск локального dev-сервера. Запуск обычно занимает
+   не больше нескольких секунд, поддерживается горячая перезагрузка при изменении файлов.
+2. `tsc && vite build` (`npm run build`) - сборка приложения для продакшена. После выполнения
+   этой команды в папке **dist** появятся итоговые файлы для деплоя приложения.
+3. `eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0`
+   (`npm run lint`) - запуск линтера.
+4. `vite preview` (`npm run preview`) - запуск локального веб-сервера из сборки
+   в папке dist, по сути - предпросмотр продакшена.
 
--   Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Каждая из этих команд также представлена скриптом в разделе **scripts** в файле
+`package.json`. Скрипты можно запускать через команду `npm run <имя скрипта>`.
