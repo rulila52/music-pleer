@@ -1,0 +1,34 @@
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+.background--blured {
+    --blur-size: 5px;
+    margin: calc(var(--blur-size) * -1);
+    top: calc(var(--blur-size) * -1);
+    bottom: calc(var(--blur-size) * -1);
+    left: calc(var(--blur-size) * -1);
+    right: calc(var(--blur-size) * -1);
+    filter: blur(var(--blur-size));
+
+    width: unset;
+    height: unset;
+    position: absolute;
+}
+
+.background__wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.background__wrapper--blured {
+    position: relative;
+    overflow: hidden;
+}
+
+.background__cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
