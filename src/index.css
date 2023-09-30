@@ -64,3 +64,44 @@
 .slider::-webkit-slider-runnable-track {
     background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center / 100% var(--track-height);
 }
+
+.slider,
+.slider::-moz-range-track,
+.slider::-moz-range-thumb {
+    appearance: none;
+    transition: all ease 100ms;
+    height: var(--thumb-height);
+}
+
+.slider::-moz-range-track,
+.slider::-moz-range-thumb,
+.slider::-moz-range-progress {
+    background: #fff0;
+}
+
+.slider::-moz-range-thumb {
+    background: currentColor;
+    border: 0;
+    width: var(--thumb-width);
+    border-radius: var(--thumb-width);
+    cursor: grab;
+}
+
+.slider:active::-moz-range-thumb {
+    cursor: grabbing;
+}
+
+.slider::-moz-range-track {
+    width: 100%;
+    background: var(--track-color);
+}
+
+.slider::-moz-range-progress {
+    background: currentColor;
+    transition-delay: 30ms;
+}
+
+.slider::-moz-range-track,
+.slider::-moz-range-progress {
+    height: var(--track-height);
+}
