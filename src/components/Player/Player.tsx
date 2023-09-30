@@ -88,19 +88,17 @@ export const Player: FC = () => {
     };
 
     const setVolumeLouder = () => {
-        if (volume + 0.1 > 1) {
-            setVolume(1);
-            return;
-        }
-        setVolume((volume) => volume + 0.1);
+        if (!audioRef.current) return;
+        const newValue = volume + 0.1 > 1 ? 1 : volume + 0.1;
+        setVolume(newValue);
+        audioRef.current.volume = newValue;
     };
 
     const setVolumeQuiet = () => {
-        if (volume - 0.1 < 0) {
-            setVolume(0);
-            return;
-        }
-        setVolume((volume) => volume - 0.1);
+        if (!audioRef.current) return;
+        const newValue = volume - 0.1 < 0 ? 1 : volume - 0.1;
+        setVolume(newValue);
+        audioRef.current.volume = newValue;
     };
 
     const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
