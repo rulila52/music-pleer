@@ -1,0 +1,19 @@
+.base {
+    min-height: calc(var(--player-container-height) + 50px);
+    height: 100vh;
+    min-width: calc(var(--player-container-width) + var(--disk-width) / 2 + 50px);
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.player-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

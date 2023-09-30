@@ -19,4 +19,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
+  "types": [
+    "vite-plugin-svgr/client"
+  ]
 }

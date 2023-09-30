@@ -1,6 +1,10 @@
-.background {
-    width: 100%;
+.background__wrapper {
     height: 100%;
+}
+
+.background__wrapper--blured {
+    position: relative;
+    overflow: hidden;
 }
 
 .background--blured {
@@ -12,19 +16,7 @@
     right: calc(var(--blur-size) * -1);
     filter: blur(var(--blur-size));
 
-    width: unset;
-    height: unset;
     position: absolute;
-}
-
-.background__wrapper {
-    width: 100%;
-    height: 100%;
-}
-
-.background__wrapper--blured {
-    position: relative;
-    overflow: hidden;
 }
 
 .background__cover {
