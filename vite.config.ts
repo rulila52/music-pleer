@@ -4,5 +4,6 @@ import svgrComponent from "vite-plugin-svgr-component";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "/music-pleer/",
     plugins: [react(), svgrComponent()],
 });

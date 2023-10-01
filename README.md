@@ -20,6 +20,12 @@
    в папке dist, по сути - предпросмотр продакшена.
 4. `npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0`
    (`npm run lint`) - запуск линтера.
+5. `npm run build` (`npm run predeploy`) - скрипт, запускающийся перед deploy.
+6. `npx gh-pages -d dist` (`npm run deploy`) - деплой проекта на Github Pages.
 
 Каждая из этих команд также представлена скриптом в разделе **scripts** в файле
 `package.json`. Скрипты можно запускать через команду `npm run <имя скрипта>`.
+
+## GitHub Pages
+
+Сайт доступен по адресу: [тык](https://rulila52.github.io/music-pleer/)
