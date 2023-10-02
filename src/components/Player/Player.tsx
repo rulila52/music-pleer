@@ -52,25 +52,23 @@ export const Player: FC = () => {
     };
 
     useEffect(() => {
-        setIsRotating(isPlaying);
-        if (isPlaying) {
+        if (!audioRef.current) return;
+        setVolume(audioRef.current?.volume);
+    }, [audioRef.current?.volume]);
+
+    useEffect(() => {
+        const newIsPlaying = !audioRef.current?.paused;
+        dispatch(setIsPlayingAction(newIsPlaying));
+        setIsRotating(newIsPlaying);
+        if (newIsPlaying) {
             rotatingDisk();
         } else {
             stopRotatingDisk();
         }
-    }, [isPlaying]);
+    }, [audioRef.current?.paused]);
 
-    const playSong = () => {
-        if (!audioRef.current) return;
-        audioRef.current.play();
-        dispatch(setIsPlayingAction(true));
-    };
-
-    const pauseSong = () => {
-        if (!audioRef.current) return;
-        audioRef.current.pause();
-        dispatch(setIsPlayingAction(false));
-    };
+    const playSong = () => audioRef.current?.play();
+    const pauseSong = () => audioRef.current?.pause();
 
     const changeSong = (toPrev?: boolean) => {
         if (!audioRef.current) return;
@@ -78,32 +76,25 @@ export const Player: FC = () => {
         dispatch(toPrev ? toPrevSongAction() : toNextSongAction());
 
         setTimeout(() => {
-            dispatch(setIsPlayingAction(!!audioRef.current && !!animationFrameRef.current));
-            if (!audioRef.current || !animationFrameRef.current) return;
-            audioRef.current.play();
-            stopRotatingDisk();
             setRotationAngle(0);
-            rotatingDisk();
+            audioRef.current?.play();
         }, 0);
     };
 
     const setVolumeLouder = () => {
         if (!audioRef.current) return;
         const newValue = volume + 0.1 > 1 ? 1 : volume + 0.1;
-        setVolume(newValue);
         audioRef.current.volume = newValue;
     };
 
     const setVolumeQuiet = () => {
         if (!audioRef.current) return;
         const newValue = volume - 0.1 < 0 ? 0 : volume - 0.1;
-        setVolume(newValue);
         audioRef.current.volume = newValue;
     };
 
     const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (!audioRef.current) return;
-        setVolume(+event.target.value);
         audioRef.current.volume = +event.target.value;
     };
 
