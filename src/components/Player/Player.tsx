@@ -30,26 +30,13 @@ export const Player: FC = () => {
     const [volume, setVolume] = useState(0.5);
     const [progress, setProgress] = useState(0);
 
+    const [withAnimation, setWithAnimation] = useState<boolean>(true);
     const [isRotating, setIsRotating] = useState<boolean>(false);
-    const [rotationAngle, setRotationAngle] = useState(0);
-    const animationFrameRef = useRef<number | null>(null);
 
     const progressBarRef = useRef<HTMLDivElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const song = songs[currentSongIndex];
-
-    const rotatingDisk = () => {
-        animationFrameRef.current = requestAnimationFrame(() => {
-            setRotationAngle((prevAngle) => prevAngle + 0.2);
-            rotatingDisk();
-        });
-    };
-
-    const stopRotatingDisk = () => {
-        if (!animationFrameRef.current) return;
-        cancelAnimationFrame(animationFrameRef.current);
-    };
 
     useEffect(() => {
         if (!audioRef.current) return;
@@ -60,11 +47,6 @@ export const Player: FC = () => {
         const newIsPlaying = !audioRef.current?.paused;
         dispatch(setIsPlayingAction(newIsPlaying));
         setIsRotating(newIsPlaying);
-        if (newIsPlaying) {
-            rotatingDisk();
-        } else {
-            stopRotatingDisk();
-        }
     }, [audioRef.current?.paused]);
 
     const playSong = () => audioRef.current?.play();
@@ -74,9 +56,10 @@ export const Player: FC = () => {
         if (!audioRef.current) return;
         audioRef.current.pause();
         dispatch(toPrev ? toPrevSongAction() : toNextSongAction());
+        setWithAnimation(false);
 
         setTimeout(() => {
-            setRotationAngle(0);
+            setWithAnimation(true);
             audioRef.current?.play();
         }, 0);
     };
@@ -230,11 +213,9 @@ export const Player: FC = () => {
                     className={clsx(
                         s["disk"],
                         s["disk--position"],
-                        isRotating && s["disk--transition"],
+                        withAnimation && s["disk--rotate"],
+                        !isRotating && s["disk--rotate-stopped"],
                     )}
-                    style={{
-                        transform: `rotate(${rotationAngle}deg)`,
-                    }}
                 >
                     <img
                         src={song.cover || defaultCover}
