@@ -54,7 +54,7 @@ export const songsList: SongData[] = [
     },
     {
         audioFile: atletiMp3,
-        artist: "Atletico de Madrid - гимн",
+        title: "Atletico de Madrid - гимн",
         cover: atletiCover,
     },
     {
