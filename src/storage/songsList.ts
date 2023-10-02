@@ -6,12 +6,14 @@ import movingwayupMp3 from "../assets/sounds/songs/bensound-movingwayup.mp3";
 import raindropsMp3 from "../assets/sounds/songs/bensound-raindrops.mp3";
 import thedeclineofmankindMp3 from "../assets/sounds/songs/bensound-thedeclineofmankind.mp3";
 import voyageverslenordMp3 from "../assets/sounds/songs/bensound-voyageverslenord.mp3";
+import denginaveterMp3 from "../assets/sounds/songs/Markul_-_Dengi_na_veter_59804845.mp3";
 import leagueCover from "../assets/images/covers/league_risian.jpg";
 import infinityCycleCover from "../assets/images/covers/infinitcycle_spearfisher.jpg";
 import metamorphosisCover from "../assets/images/covers/metamorphosis_laneking.jpg";
 import movingwayupCover from "../assets/images/covers/movingwayup_marcus.jpg";
 import raindropsCover from "../assets/images/covers/raindrops_veaced.jpg";
 import thedeclineofmankindCover from "../assets/images/covers/thedeclineofmankind_gefilterfish.jpg";
+import denginaveterCover from "../assets/images/covers/denginaveter_markul.jpg";
 
 export const songsList: SongData[] = [
     {
@@ -49,6 +51,12 @@ export const songsList: SongData[] = [
         title: "The Decline Of Man Kind",
         artist: "Ge Filter Fish",
         cover: thedeclineofmankindCover,
+    },
+    {
+        audioFile: denginaveterMp3,
+        title: "Деньги на ветер",
+        artist: "Marcul",
+        cover: denginaveterCover,
     },
     {
         audioFile: voyageverslenordMp3,
