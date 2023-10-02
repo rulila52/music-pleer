@@ -108,7 +108,7 @@ export const Player: FC = () => {
                     >
                         <button
                             className={clsx(s["controls__button"], s["controls__button--small"])}
-                            onClick={() => changeSong()}
+                            onClick={() => changeSong(true)}
                         >
                             <PrevButton
                                 aria-label="Предыдущий трек"
@@ -133,7 +133,7 @@ export const Player: FC = () => {
                         </button>
                         <button
                             className={clsx(s["controls__button"], s["controls__button--small"])}
-                            onClick={() => changeSong(true)}
+                            onClick={() => changeSong()}
                         >
                             <NextButton
                                 aria-label="Следующий трек"
