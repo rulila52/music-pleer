@@ -40,8 +40,8 @@ export const Player: FC = () => {
 
     useEffect(() => {
         if (!audioRef.current) return;
-        setVolume(audioRef.current?.volume);
-    }, [audioRef.current?.volume]);
+        audioRef.current.volume = volume;
+    }, [volume]);
 
     useEffect(() => {
         const newIsPlaying = !audioRef.current?.paused;
@@ -67,18 +67,18 @@ export const Player: FC = () => {
     const setVolumeLouder = () => {
         if (!audioRef.current) return;
         const newValue = volume + 0.1 > 1 ? 1 : volume + 0.1;
-        audioRef.current.volume = newValue;
+        setVolume(newValue);
     };
 
     const setVolumeQuiet = () => {
         if (!audioRef.current) return;
         const newValue = volume - 0.1 < 0 ? 0 : volume - 0.1;
-        audioRef.current.volume = newValue;
+        setVolume(newValue);
     };
 
     const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (!audioRef.current) return;
-        audioRef.current.volume = +event.target.value;
+        setVolume(+event.target.value);
     };
 
     const handleProgressUpdate = () => {
