@@ -179,8 +179,7 @@
 }
 
 .disk--rotate {
-    animation: 10s linear 0s normal none infinite running rotating;
-    animation-play-state: runniing;
+    animation: 10s linear 0s infinite normal none running rotating;
     will-change: transform;
 }
 @keyframes rotating {
